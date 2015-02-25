@@ -29,7 +29,7 @@ class Posts extends AdminController {
 		{
 			$this->post->insert($this->post_params(), TRUE);
 
-			$this->session->set_flashdata('message', 'Data berhasil disimpan');
+			$this->session->set_flashdata('message', alert_info('Data berhasil disimpan'));
 
       		redirect('posts');
 		}		
@@ -45,7 +45,16 @@ class Posts extends AdminController {
 
 		$this->data['categories'] = $this->category->get_all();
 
-		$this->post->update($id, $this->post_params(), TRUE);
+		$this->form_validation->set_rules($this->post->validate);
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			$this->post->update($id, $this->post_params(), TRUE);
+
+			$this->session->set_flashdata('message', alert_info('Data berhasil diupdate'));
+
+      		redirect('posts');
+		}	
 
 		$this->data['yield'] = $this->yield;
 
@@ -55,7 +64,7 @@ class Posts extends AdminController {
 	public function delete($id)
 	{
 		$this->post->delete($id);
-		$this->session->set_flashdata('message', 'Delete success!');
+		$this->session->set_flashdata('message', alert_info('Delete success!'));
 
 		redirect('posts');
 	}
