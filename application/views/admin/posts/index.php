@@ -15,10 +15,13 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+
+            <?php $this->load->view('admin/shared/notification'); ?>
+
+            <div class="box box-primary">
                 <div class="box-header">
                     <div class="box-title btn-group">
-                        <a href="<?php echo site_url($this->router->fetch_class() . '/add') ?>" class="btn btn-success">
+                        <a href="<?php echo site_url($this->router->fetch_class() . '/add') ?>" class="btn btn-primary">
                             <i class="fa fa-plus"></i>&nbsp; Add New
                         </a>
                     </div>
@@ -27,53 +30,26 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td> 4</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0</td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.5</td>
-                                <td>Win 95+</td>
-                                <td>5.5</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php foreach ($posts as $post) { ?>
+                                <tr>
+                                    <td><?php echo $post->title ?></td>
+                                    <td><?php echo $post->author ?></td>
+                                    <td><?php echo $post->category_id ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="<?php echo site_url($this->router->fetch_class() . '/edit/' . $post->id) ?>" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                            <a href="<?php echo site_url($this->router->fetch_class() . '/delete/' . $post->id) ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->

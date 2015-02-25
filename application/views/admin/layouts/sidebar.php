@@ -23,18 +23,17 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li>
-            <a href="../../index.html">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <a href="<?php echo site_url('/') ?>">
+                <span>Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
+            <a href="<?php echo site_url('posts') ?>">
+                <span>Posts</span>
             </a>
         </li>
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-bar-chart-o"></i>
                 <span>Charts</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
