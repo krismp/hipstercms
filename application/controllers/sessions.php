@@ -27,7 +27,7 @@ class Sessions extends FrontendController {
 
                 $this->session->set_flashdata('message', alert_success('Login Berhasil ! Selamat datang ' . $this->current_user->fullname));
 
-                redirect('posts');
+                redirect('admin/dashboard');
             }
 
             $this->session->set_flashdata('message', alert_danger('Invalid credentials, please try again'));

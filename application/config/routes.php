@@ -41,6 +41,14 @@
 $route['default_controller'] = "sessions/add";
 $route['404_override'] = '';
 
+$route['login'] = 'sessions/add';
+
+// admin routes
+// this route need authentication to access
+$route['admin/dashboard'] = 'dashboard';
+$route['admin/posts'] = 'posts';
+$route['admin/users'] = 'users';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

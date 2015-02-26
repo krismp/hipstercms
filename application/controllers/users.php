@@ -5,8 +5,6 @@ class Users extends AdminController {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model', 'user');
-        $this->load->library('form_validation');
     }
 
     public function index()
@@ -20,6 +18,8 @@ class Users extends AdminController {
 
     public function add()
     {
+        $this->load->library('form_validation');
+
         $this->form_validation->set_rules($this->user->validate);
 
         if ($this->form_validation->run() == TRUE)
@@ -39,6 +39,8 @@ class Users extends AdminController {
     public function edit($id)
     {
         $this->data['user'] = $this->user->get($id);
+
+        $this->load->library('form_validation');
 
         $this->form_validation->set_rules($this->user->validate);
 

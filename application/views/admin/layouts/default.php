@@ -35,6 +35,27 @@
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        <?php echo ucfirst($this->router->fetch_class()) ?>
+                    </h1>
+                    
+                    <!-- Load breadcrumb dinamically -->
+                    <?php 
+                        if ($this->router->fetch_method() == 'index')
+                        {
+                            $this->load->view('admin/shared/index_breadcrumb');
+                        }
+                        else
+                        {
+                            $this->load->view('admin/shared/page_breadcrumb');
+                        }
+                    ?>
+                    
+                </section>
+
+                <!-- YIELD -->
                 <?php $this->load->view($yield); ?>
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
