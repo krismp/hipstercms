@@ -23,17 +23,17 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li>
-            <a href="<?php echo site_url('/') ?>">
+            <a href="<?php echo site_url('admin/dashboard') ?>">
                 <span>Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo site_url('posts') ?>">
+            <a href="<?php echo site_url('admin/posts') ?>">
                 <span>Posts</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo site_url('users') ?>">
+            <a href="<?php echo site_url('admin/users') ?>">
                 <span>Users</span>
             </a>
         </li>

@@ -76,3 +76,37 @@ if ( ! function_exists('action_buttons'))
                 </div>';
     }   
 }
+
+if ( ! function_exists('load_page_css'))
+{
+    function load_page_css()
+    {
+        $CI =& get_instance();
+
+        $filename = 'admin/' . $CI->router->fetch_class() . '/' . $CI->router->fetch_method() . '.css';
+
+        if (file_exists(APPPATH . 'views/' . $filename . '.php'))
+        {
+            return $CI->load->view($filename.'.php');
+        }
+
+        return null;
+    }   
+}
+
+if ( ! function_exists('load_page_js'))
+{
+    function load_page_js()
+    {
+        $CI =& get_instance();
+
+        $filename = 'admin/' . $CI->router->fetch_class() . '/' . $CI->router->fetch_method() . '.js';
+
+        if (file_exists(APPPATH . 'views/' . $filename . '.php'))
+        {
+            return $CI->load->view($filename.'.php');
+        }
+
+        return null;
+    }   
+}

@@ -1,0 +1,1 @@
+<link href="<?php echo base_url() ?>assets/admin/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />

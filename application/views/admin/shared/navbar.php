@@ -213,8 +213,8 @@
                         <li class="user-header bg-light-blue">
                             <img src="<?php echo base_url(); ?>assets/admin/img/avatar3.png" class="img-circle" alt="User Image" />
                             <p>
-                                Jane Doe - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <?php echo $current_user->fullname ?>
+                                <small>Member since <?php echo $this->carbon->createFromTimestamp($current_user->created_at)->diffInDays(); ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->
