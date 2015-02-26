@@ -45,7 +45,7 @@ class Sessions extends FrontendController {
         $this->session->unset_userdata('user_session');
         $this->session->set_flashdata('message', alert_info('Logout success!'));
 
-        redirect('sessions/add');
+        redirect('login');
     }
 
     private function session_params()

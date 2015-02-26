@@ -20,7 +20,7 @@ class AdminController extends CI_Controller
         {
             $this->session->set_flashdata('message', alert_warning('Untuk mengakses halaman, silahkan login terlebih dahulu'));
 
-            redirect('sessions/add');
+            redirect('login');
         }
         else
         {
