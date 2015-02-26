@@ -7,7 +7,6 @@ class AdminController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('carbon');
         $this->load->model('user_model', 'user');
 
         $this->yield = 'admin/' . $this->router->fetch_class() . '/' . $this->router->fetch_method();

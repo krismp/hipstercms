@@ -214,20 +214,8 @@
                             <img src="<?php echo base_url(); ?>assets/admin/img/avatar3.png" class="img-circle" alt="User Image" />
                             <p>
                                 <?php echo $current_user->fullname ?>
-                                <small>Member since <?php echo $this->carbon->createFromTimestamp($current_user->created_at)->diffInDays(); ?></small>
+                                <small>Member since <?php echo time_elapsed_string($current_user->created_at) ?></small>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
