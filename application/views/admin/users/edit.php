@@ -22,10 +22,10 @@
                     <h3 class="box-title">Quick Example</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <?php echo form_open('', array('role' => 'form')); ?>
+                <?php echo form_open('users/edit/' . $user->id, array('role' => 'form')); ?>
                     
                     <?php $this->load->view('admin/' . $this->router->fetch_class() . '/_form'); ?>
-                    
+
                 <?php echo form_close(); ?>
             </div><!-- /.box -->
         </div><!--/.col (right) -->

@@ -19,6 +19,23 @@ class Post_model extends MY_Model {
                'rules' => 'required' )
     );
 
+    public $before_create = array( 'created_at' );
+    public $before_update = array( 'updated_at' );
+
+    public function created_at($data)
+    {
+        $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
+
+        return $data;
+    }
+
+    public function updated_at($data)
+    {
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        return $data;
+    }
+
 }
 
 /* End of file post_model.php */

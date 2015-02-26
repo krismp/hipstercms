@@ -63,3 +63,16 @@ if ( ! function_exists('alert_success'))
         </div>';
     }   
 }
+
+if ( ! function_exists('action_buttons'))
+{
+    function action_buttons($entity)
+    {
+        $CI =& get_instance();
+
+        return '<div class="btn-group">
+                    <a href="'.site_url($CI->router->fetch_class() . '/edit/' . $entity).'" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                    <a href="'.site_url($CI->router->fetch_class() . '/delete/' . $entity).'" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                </div>';
+    }   
+}

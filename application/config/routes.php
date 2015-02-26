@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "posts";
+$route['default_controller'] = "sessions/add";
 $route['404_override'] = '';
 
 

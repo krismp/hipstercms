@@ -2,7 +2,7 @@
 <section class="content-header">
     <h1>
         <?php echo ucfirst($this->router->fetch_class()) ?>
-        <small>Preview</small>
+        <small>advanced tables</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -29,20 +29,20 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Category</th>
+                                <th>Fullname</th>
+                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($posts as $post) { ?>
+                            <?php foreach ($users as $user) { ?>
                                 <tr>
-                                    <td><?php echo $post->title ?></td>
-                                    <td><?php echo $post->author ?></td>
-                                    <td><?php echo $post->category_id ?></td>
+                                    <td><?php echo $user->fullname ?></td>
+                                    <td><?php echo $user->username ?></td>
+                                    <td><?php echo $user->email ?></td>
                                     <td>
-                                        <?php echo action_buttons($post->id) ?>
+                                        <?php echo action_buttons($user->id) ?>
                                     </td>
                                 </tr>
                             <?php } ?>
