@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends AdminController {
+class Groups extends AdminController {
+
+    public $has_many = array( 'users' );
 
     public function __construct()
     {
@@ -10,7 +12,7 @@ class Users extends AdminController {
 
     public function index()
     {
-        $this->data['users'] = $this->user->get_all();
+        $this->data['groups'] = $this->group->get_all();
 
         $this->data['yield'] = $this->yield;
 
@@ -19,19 +21,17 @@ class Users extends AdminController {
 
     public function add()
     {
-        $this->data['groups'] = $this->group->get_all();
-
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules($this->user->validate);
+        $this->form_validation->set_rules($this->group->validate);
 
         if ($this->form_validation->run() == TRUE)
         {
-            $this->user->insert($this->user_params(), TRUE);
+            $this->group->insert($this->group_params(), TRUE);
 
             $this->session->set_flashdata('message', alert_info('Data berhasil disimpan'));
 
-            redirect('users');
+            redirect('groups');
         }       
 
         $this->data['yield'] = $this->yield;
@@ -41,21 +41,19 @@ class Users extends AdminController {
 
     public function edit($id)
     {
-        $this->data['groups'] = $this->group->get_all();
-        
-        $this->data['user'] = $this->user->get($id);
+        $this->data['group'] = $this->group->get($id);
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules($this->user->validate);
+        $this->form_validation->set_rules($this->group->validate);
 
         if ($this->form_validation->run() == TRUE)
         {
-            $this->user->update($id, $this->user_params(), TRUE);
+            $this->group->update($id, $this->group_params(), TRUE);
 
             $this->session->set_flashdata('message', alert_info('Data berhasil diupdate'));
 
-            redirect('users');
+            redirect('groups');
         }   
 
         $this->data['yield'] = $this->yield;
@@ -65,21 +63,16 @@ class Users extends AdminController {
 
     public function delete($id)
     {
-        $this->user->delete($id);
+        $this->group->delete($id);
         $this->session->set_flashdata('message', alert_info('Delete success!'));
 
-        redirect('users');
+        redirect('groups');
     }
 
-    private function user_params()
+    private function group_params()
     {
         return array( 
-            'group_id' => $this->input->post('group_id') ,
-            'fullname' => $this->input->post('fullname') ,
-            'username' => $this->input->post('username') ,
-            'email' => $this->input->post('email') ,
-            'password' => hash('sha1', $this->input->post('password')),
-            'gender' => $this->input->post('gender'),
+            'name' => $this->input->post('name')
         );
     }
 }

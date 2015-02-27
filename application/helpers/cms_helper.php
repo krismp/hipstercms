@@ -1,5 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! function_exists('list_all_controllers_except'))
+{
+    function list_all_controllers_except($except = array())
+    {
+        $controllers = array();
+
+        foreach(glob(APPPATH . 'controllers/*' . EXT) as $controller)
+        {
+            $controller = basename($controller, EXT);
+
+            if (!in_array($controller, $except))
+            {
+                $controllers[] = $controller;
+            }
+        }
+
+        return $controllers;
+    }
+}
+
 if ( ! function_exists('show_error_field'))
 {
     function show_error_field($entity)

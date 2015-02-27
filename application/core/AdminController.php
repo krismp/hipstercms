@@ -3,10 +3,12 @@
 class AdminController extends CI_Controller
 {
     protected $current_user;
+    protected $page_alias;
 
     public function __construct()
     {
         parent::__construct();
+        
         $this->load->model('user_model', 'user');
 
         $this->yield = 'admin/' . $this->router->fetch_class() . '/' . $this->router->fetch_method();
@@ -25,6 +27,15 @@ class AdminController extends CI_Controller
         else
         {
             $this->current_user = $this->data['current_user'];
+        }
+
+        if (is_null($this->page_alias))
+        {
+            $this->data['page_alias'] = ucwords($this->router->fetch_class());
+        }
+        else
+        {
+            $this->data['page_alias'] = ucwords($this->page_alias);
         }
     }
 }

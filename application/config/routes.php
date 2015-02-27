@@ -48,6 +48,8 @@ $route['login'] = 'sessions/add';
 $route['admin/dashboard'] = 'dashboard';
 $route['admin/posts'] = 'posts';
 $route['admin/users'] = 'users';
+$route['admin/permissions'] = 'permissions';
+$route['admin/groups'] = 'groups';
 
 
 /* End of file routes.php */

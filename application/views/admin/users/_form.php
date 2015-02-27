@@ -1,4 +1,15 @@
 <div class="box-body">
+    <div class="form-group <?php echo has_error_class('group_id'); ?>">
+        <label for="group_id">User Group</label>
+            <select name="group_id" id="group_id" class="form-control" <?php echo ($groups) ? '' : 'disabled'; ?>>
+                <?php foreach ($groups as $group) : ?>
+                    <option value="<?php echo $group->id ?>" <?php echo isset($user->group_id) && $user->group_id == $group->id ? 'selected' : ''; ?>>
+                        <?php echo $group->name; ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+        <?php echo show_error_field('group_id'); ?>
+    </div>
     <div class="form-group <?php echo has_error_class('fullname'); ?>">
         <label for="fullname">Fullname</label>
         <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo isset($user->fullname) ? $user->fullname : set_value('fullname') ?>">
@@ -7,8 +18,8 @@
     <div class="form-group <?php echo has_error_class('gender'); ?>">
         <label for="gender">Gender</label>
         <select name="gender" id="gender" class="form-control">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="male" <?php echo isset($user->gender) && $user->gender == 'male' ? 'selected' : ''; ?>>Male</option>
+            <option value="female" <?php echo isset($user->gender) && $user->gender == 'female' ? 'selected' : ''; ?>>Female</option>
         </select>
         <?php echo show_error_field('gender'); ?>
     </div>
