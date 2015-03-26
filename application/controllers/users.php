@@ -23,7 +23,7 @@ class Users extends AdminController {
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules($this->user->validate);
+        $this->form_validation->set_rules($this->user->create_rules);
 
         if ($this->form_validation->run() == TRUE)
         {
@@ -47,7 +47,7 @@ class Users extends AdminController {
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules($this->user->validate);
+        $this->form_validation->set_rules($this->user->edit_rules);
 
         if ($this->form_validation->run() == TRUE)
         {
@@ -81,6 +81,50 @@ class Users extends AdminController {
             'password' => hash('sha1', $this->input->post('password')),
             'gender' => $this->input->post('gender'),
         );
+    }
+
+    public function check_username($username)
+    {
+        $user = $this->user->get_by(array(
+            'id !=' => $this->uri->segment(3),
+            'username' => $username
+        ));
+
+        if ($user)
+        {
+            $this->form_validation->set_message(
+                'check_username',
+                'Sorry, This username is already used by another user please select another one'
+            );
+
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
+    public function check_email($email)
+    {
+        $user = $this->user->get_by(array(
+            'id !=' => $this->uri->segment(3),
+            'email' => $email
+        ));
+
+        if ($user)
+        {
+            $this->form_validation->set_message(
+                'check_email',
+                'Sorry, This email is already used by another user please select another one'
+            );
+
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
     }
 }
 

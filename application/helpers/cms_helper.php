@@ -1,5 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! function_exists('dd'))
+{
+    function dd($items)
+    {
+        return die(var_dump($items));
+    }
+}
+
+if ( ! function_exists('last_query'))
+{
+    function last_query($query)
+    {
+        $CI =& get_instance();
+        
+        return die(var_dump($CI->db->last_query($query)));
+    }
+}
+
 if ( ! function_exists('list_all_controllers_except'))
 {
     function list_all_controllers_except($except = array())

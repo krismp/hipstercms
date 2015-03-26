@@ -35,12 +35,12 @@
     </div>
     <div class="form-group <?php echo has_error_class('password'); ?>">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" value="<?php echo isset($user->password) ? $user->password : set_value('password') ?>">
+        <input type="password" class="form-control" id="password" name="password" value="">
         <?php echo show_error_field('password'); ?>
     </div>
     <div class="form-group <?php echo has_error_class('passconf'); ?>">
         <label for="passconf">Password</label>
-        <input type="password" class="form-control" id="passconf" name="passconf" value="<?php echo isset($user->passconf) ? $user->passconf : set_value('passconf') ?>">
+        <input type="password" class="form-control" id="passconf" name="passconf" value="">
         <?php echo show_error_field('passconf'); ?>
     </div>
 </div><!-- /.box-body -->
